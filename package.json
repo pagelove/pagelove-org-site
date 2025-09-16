@@ -1,0 +1,23 @@
+{
+  "name": "pagelove.org",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pagelove Org Website",
+  "keywords": [
+    "website"
+  ],
+  "homepage": "https://pagelove.org/",
+  "bugs": {
+    "url": "https://github.com/jamesaduncan/schema-host/issues"
+  },
+  "author": "james@pagelove.team", 
+  "type": "module",
+  "scripts": {
+    "build": "npx @11ty/eleventy --input=src --output=docs --config=./eleventy.config.mjs",
+    "test": "npx @11ty/eleventy --input=src --output=docs --config=./eleventy.config.mjs && npx cspell --no-progress --no-summary --show-suggestions docs",
+    "dev": "npx @11ty/eleventy --input=src --output=docs --config=./eleventy.config.mjs --serve --watch"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
