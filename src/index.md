@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Pagelove
 ---
-# Hello world!
+This is wrapped inside the ```main``` tag of the ```default``` layout.
