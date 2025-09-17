@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{ pagelove }{% if title %} - {{ title }}{% endif %}</title>
         {% if head.stylesheet %}
-            {% include head.stylesheet %}
+            {% render head.stylesheet %}
         {% endif %}
         <link rel="stylesheet" href="/css/style.css">
         {% if head.script %}
-            {% include head.script %}
+            {% render head.script %}
         {% endif %}
     </head>
     <body>
