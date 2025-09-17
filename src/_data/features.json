@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Stores",
+    "color": "blue",
+    "gradient": "from-blue-500/20 to-blue-600/30",
+    "description": "Save data straight in the HTML itself, not databases. No complex backend setup or API endpoints - your HTML becomes the storage layer.",
+    "tag": "<data-store>",
+    "icon": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4\"></path>"
+  },
+  {
+    "title": "Syncs",
+    "color": "emerald",
+    "gradient": "from-emerald-500/20 to-emerald-600/30",
+    "description": "Always updated in realtime through web sockets. Changes propagate instantly to all users without any additional infrastructure.",
+    "tag": "<sync-state>",
+    "icon": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0\"></path>"
+  },
+  {
+    "title": "Thinks",
+    "color": "purple",
+    "gradient": "from-purple-500/20 to-purple-600/30",
+    "description": "AI has everything it needs to read, use, edit the page. No APIs needed - AI agents can directly interact with your HTML structure.",
+    "tag": "<ai-ready>",
+    "icon": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z\"></path>"
+  }
+]
