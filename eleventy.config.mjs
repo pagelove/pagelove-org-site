@@ -51,5 +51,6 @@ export const config = {
     dir: {
         input: "src",
         output: "docs"
-    }
+    },
+    pathPrefix: process.env.NODE_ENV === 'production' ? '/pagelove-org-site' : ''
 }

@@ -7,7 +7,7 @@
         {% if head.stylesheet %}
             {% render head.stylesheet %}
         {% endif %}
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
         {% if head.script %}
             {% render head.script %}
         {% endif %}
