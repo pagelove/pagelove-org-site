@@ -1,0 +1,36 @@
+<footer class="py-16 bg-card border-t border-border">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <!-- Logo and tagline -->
+            <div class="text-center md:text-left">
+                <div class="flex items-center gap-2 justify-center md:justify-start mb-2">
+                    <div class="html-tag-accent">PageLove</div>
+                </div>
+                <p class="text-muted-foreground">
+                    Build full AI-ready web apps using nothing but HTML
+                </p>
+            </div>
+
+            <!-- Social links -->
+            <div class="flex items-center gap-4">
+                {% for link in social_links %}
+                <a
+                    href="{{ link.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-ghost btn-sm flex items-center gap-2"
+                >
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {{ link.icon | safe }}
+                    </svg>
+                    {{ link.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
+            <p>© {{ site.year }} PageLove. Building the future of web development, one HTML tag at a time.</p>
+        </div>
+    </div>
+</footer>

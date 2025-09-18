@@ -1,0 +1,15 @@
+{
+  "before": [
+    "React + Node + PostgreSQL",
+    "REST API endpoints",
+    "Redux/Zustand/MobX",
+    "Secure UI + API + database",
+    "Custom MCP tools",
+    "Docker + Kubernetes"
+  ],
+  "after": [
+    "One HTML file",
+    "DOM-level access control",
+    "PageLove hosting"
+  ]
+}

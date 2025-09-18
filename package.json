@@ -1,23 +1,28 @@
 {
-  "name": "pagelove.org",
-  "version": "0.1.0",
+  "name": "pagelove-eleventy",
   "private": true,
-  "description": "Pagelove Org Website",
-  "keywords": [
-    "website"
-  ],
-  "homepage": "https://pagelove.org/",
-  "bugs": {
-    "url": "https://github.com/jamesaduncan/schema-host/issues"
-  },
-  "author": "james@pagelove.team", 
-  "type": "module",
+  "version": "0.0.0",
+  "type": "commonjs",
   "scripts": {
-    "build": "npx @11ty/eleventy --input=src --output=docs --config=./eleventy.config.mjs",
-    "test": "npx @11ty/eleventy --input=src --output=docs --config=./eleventy.config.mjs && npx cspell --no-progress --no-summary --show-suggestions docs",
-    "dev": "npx @11ty/eleventy --input=src --output=docs --config=./eleventy.config.mjs --serve --watch"
+    "build:css": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch",
+    "build:11ty": "eleventy",
+    "build": "npm run build:css:prod && npm run build:11ty",
+    "build:css:prod": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --minify",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:11ty": "eleventy --serve --port=8080",
+    "dev:css": "npm run build:css",
+    "start": "npm run build && npx http-server _site -p 8080",
+    "clean": "rm -rf _site"
   },
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "http-server": "^14.1.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
