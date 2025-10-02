@@ -35,5 +35,9 @@ main {
 
     h1 {
         font-size: 3vw;
-    }    
+    } 
+
+    article {
+        display: none;
+    }
 }
