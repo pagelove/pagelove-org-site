@@ -1,22 +1,19 @@
-# PageLove Organization Site
+# Pagelove.org Website
 
-Static site generated with Eleventy for PageLove - Build AI-ready web apps with just HTML.
-
-## Development
+Basic usage:
 
 ```bash
-npm install
-npm run dev          # Start development server
-npm run build        # Build production site
+% npm install
+% npm run dev
+
+> pagelove.org@0.1.0 dev
+> npx @11ty/eleventy --input=src --output=docs --config=./eleventy.config.mjs --serve --watch
+
+Adding a filter for sorting
+[11ty] Writing ./docs/index.html from ./src/index.md (liquid)
+[11ty] Copied 1 Wrote 1 file in 0.09 seconds (v3.1.2)
+[11ty] Watching…
+[11ty] Server at http://localhost:8080/
 ```
 
-Site will be available at http://localhost:8081/
-
-## Architecture
-
-- **Eleventy** - Static site generator
-- **Nunjucks** - Template engine
-- **Tailwind CSS** - Utility-first styling
-- **Vanilla JavaScript** - Interactive features
-
-Built files are generated in `_site/` directory.
+## 
