@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector-Request Parser Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .test {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        .input {
+            font-weight: bold;
+            color: #333;
+        }
+        .output {
+            font-family: monospace;
+            color: #666;
+        }
+        .pass {
+            background: #d4edda;
+        }
+        .fail {
+            background: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selector-Request Parser Test</h1>
+    <div id="results"></div>
+
+    <script type="module">
+        import { parseSelectorRequest, resolveHref, parseAndResolve } from './index.mjs';
+        
+        const testCases = [
+            // Basic paths
+            { input: '/api/users', expected: { href: '/api/users', selector: null } },
+            { input: 'http://example.com/path', expected: { href: 'http://example.com/path', selector: null } },
+            
+            // Selector only
+            { input: '#(selector=p)', expected: { href: null, selector: 'p' } },
+            { input: '#(selector=#header)', expected: { href: null, selector: '#header' } },
+            { input: '#(selector=.className)', expected: { href: null, selector: '.className' } },
+            
+            // Path with selector
+            { input: '/page#(selector=p)', expected: { href: '/page', selector: 'p' } },
+            { input: 'http://example.com/page#(selector=#main)', expected: { href: 'http://example.com/page', selector: '#main' } },
+            
+            // Complex selectors with nested parentheses
+            { input: '#(selector=tr:nth-child(15))', expected: { href: null, selector: 'tr:nth-child(15)' } },
+            { input: '#(selector=#skills-list > tr:nth-child(15))', expected: { href: null, selector: '#skills-list > tr:nth-child(15)' } },
+            { input: '/table#(selector=tbody > tr:nth-of-type(2n+1))', expected: { href: '/table', selector: 'tbody > tr:nth-of-type(2n+1)' } },
+            { input: '#(selector=div:has(> p))', expected: { href: null, selector: 'div:has(> p)' } },
+            { input: '#(selector=a:not([href*="example"]))', expected: { href: null, selector: 'a:not([href*="example"])' } },
+            
+            // Edge cases
+            { input: '', expected: { href: '', selector: null } },
+            { input: null, expected: { href: null, selector: null } },
+            { input: '#(selector=)', expected: { href: null, selector: '' } },
+            
+            // Malformed (unmatched parentheses)
+            { input: '#(selector=div:nth-child(3', expected: { href: '#(selector=div:nth-child(3', selector: null } },
+        ];
+        
+        const results = document.getElementById('results');
+        
+        testCases.forEach(test => {
+            const result = parseSelectorRequest(test.input);
+            const passed = JSON.stringify(result) === JSON.stringify(test.expected);
+            
+            const div = document.createElement('div');
+            div.className = `test ${passed ? 'pass' : 'fail'}`;
+            div.innerHTML = `
+                <div class="input">Input: ${test.input === null ? 'null' : `"${test.input}"`}</div>
+                <div class="output">Expected: ${JSON.stringify(test.expected)}</div>
+                <div class="output">Got: ${JSON.stringify(result)}</div>
+                <div>${passed ? '✓ PASS' : '✗ FAIL'}</div>
+            `;
+            results.appendChild(div);
+        });
+        
+        // Test resolution
+        console.log('\n--- Testing URL Resolution ---');
+        console.log('Resolve /api/users:', resolveHref('/api/users'));
+        console.log('Resolve ../page:', resolveHref('../page'));
+        console.log('Resolve http://example.com:', resolveHref('http://example.com'));
+        
+        // Test parseAndResolve
+        console.log('\n--- Testing parseAndResolve ---');
+        console.log('/api/users:', parseAndResolve('/api/users'));
+        console.log('#(selector=p):', parseAndResolve('#(selector=p)'));
+        console.log('/page#(selector=div):', parseAndResolve('/page#(selector=div)'));
+    </script>
+</body>
+</html>

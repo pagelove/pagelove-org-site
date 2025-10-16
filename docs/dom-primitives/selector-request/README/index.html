@@ -1,0 +1,75 @@
+<h1>Selector-Request Parser</h1>
+<p>A JavaScript module for parsing URLs with embedded CSS selectors using the <code>#(selector=...)</code> syntax.</p>
+<h2>Installation</h2>
+<pre><code class="language-javascript">import { parseSelectorRequest, parseAndResolve } from './selector-request/index.mjs';
+</code></pre>
+<h2>API</h2>
+<h3><code>parseSelectorRequest(target)</code></h3>
+<p>Parses a target string and extracts the href and selector components.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>target</code> (string): The target string to parse</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>{ href: string|null, selector: string|null }</code></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-javascript">parseSelectorRequest('/api/users')
+// { href: '/api/users', selector: null }
+
+parseSelectorRequest('#(selector=p)')
+// { href: null, selector: 'p' }
+
+parseSelectorRequest('http://example.com/page#(selector=#main)')
+// { href: 'http://example.com/page', selector: '#main' }
+
+parseSelectorRequest('#(selector=tr:nth-child(15))')
+// { href: null, selector: 'tr:nth-child(15)' }
+</code></pre>
+<h3><code>resolveHref(href, base)</code></h3>
+<p>Resolves relative URLs to absolute URLs.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>href</code> (string): The href to resolve</li>
+<li><code>base</code> (string): The base URL (defaults to <code>window.location.href</code>)</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Absolute URL string</li>
+</ul>
+<h3><code>parseAndResolve(target, base)</code></h3>
+<p>Combines parsing and URL resolution. If only a selector is provided, it defaults the href to the current page.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>target</code> (string): The target string to parse</li>
+<li><code>base</code> (string): The base URL for resolution (defaults to <code>window.location.href</code>)</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>{ href: string|null, selector: string|null }</code> with resolved URLs</li>
+</ul>
+<h2>Syntax</h2>
+<p>The module supports the following patterns:</p>
+<ul>
+<li><code>/path</code> - Just a path, no selector</li>
+<li><code>http://example.com/path</code> - Absolute URL, no selector</li>
+<li><code>#(selector=.className)</code> - Just a selector, no path (href will be null or current page)</li>
+<li><code>http://example.com/path#(selector=#id)</code> - URL with selector</li>
+</ul>
+<h2>Handling Complex Selectors</h2>
+<p>The parser correctly handles CSS selectors with nested parentheses:</p>
+<pre><code class="language-javascript">// Pseudo-classes with parentheses
+parseSelectorRequest('#(selector=li:nth-child(2n+1))')
+parseSelectorRequest('#(selector=div:has(&gt; p))')
+parseSelectorRequest('#(selector=input:not([type=&quot;submit&quot;]))')
+
+// Multiple levels of nesting
+parseSelectorRequest('#(selector=.list &gt; li:nth-of-type(3n):has(a[href*=&quot;example&quot;]))')
+</code></pre>
+<h2>Error Handling</h2>
+<ul>
+<li>Returns <code>{ href: null, selector: null }</code> for null/undefined input</li>
+<li>Treats malformed selector syntax (unmatched parentheses) as plain href</li>
+<li>Logs warnings for malformed selectors</li>
+</ul>

@@ -1,0 +1,12 @@
+<h1>DOM Subscriber</h1>
+<p>Subscribe to DOM mutations via CSS selectors, to create reactive user experiences.</p>
+<h2>Usage</h2>
+<pre><code class="language-html">&lt;p&gt;There are &lt;span id=&quot;count&quot;&gt;&lt;/span&gt; paragraphs.&lt;/p&gt;
+</code></pre>
+<pre><code class="language-javascript">import { DOMSubscriber } as &quot;https://pagelove.org/DOMSubscriber/index.mjs&quot;
+
+DOMSubscriber.subscribe( document, &quot;p&quot;, ( element, subscription ) =&gt; {
+    const pCount = document.querySelector(&quot;#count&quot;);
+    pCount.innerHTML = subscription.matching.length;
+});
+</code></pre>

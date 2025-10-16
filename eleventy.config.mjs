@@ -3,6 +3,9 @@ export default async function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/*/*/*.css");
 
     eleventyConfig.addPassthroughCopy("src/js/**/*.mjs");
+    eleventyConfig.addPassthroughCopy("src/**/*.mjs");
+    eleventyConfig.addPassthroughCopy("src/**/*.mjs");
+
     eleventyConfig.addPassthroughCopy("src/js/**/*.js");
     eleventyConfig.addPassthroughCopy("src/*/*.png");
     eleventyConfig.addPassthroughCopy("src/*/*.jpg");

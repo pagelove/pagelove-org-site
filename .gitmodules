@@ -1,0 +1,6 @@
+[submodule "src/dom-subscriber"]
+	path = src/dom-subscriber
+	url = git@github.com:pagelove/dom-subscriber.git
+[submodule "src/dom-primitives"]
+	path = src/dom-primitives
+	url = git@github.com:pagelove/dom-primitives.git

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <title>DOMSubscriber Example</title>
+        <style>
+            main {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            fieldset {
+                padding-top: .5rem;
+                border: 1px solid #ccc;
+                padding-bottom: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>DOMSubscriber Example</h1>
+        </header>
+        <main>
+            <section id="people">
+                <form>
+                    <fieldset>
+                        <legend>People</legend>
+                        <p>
+                            Add a person to the list
+                        </p>
+                        <label for="person">Name</label>
+                        <input id="person"  type="text">
+                        <button>Add</button>
+                    </fieldset>
+                </form>
+
+
+                <ul>
+                    <li>James</li>
+                    <li>Benji</li>
+                    <li>Max</li>
+                    <li>Sam</li>
+                </ul>
+
+                <div>
+                    There are <span id="people-count"></span> people.
+                </div>
+
+            </section>
+            <section id="pets">
+                <form>
+                    <fieldset>                        
+                        <legend>Pets</legend>
+                        <p>
+                            Add a pet to the list
+                        </p>
+                        <label for="person">Name</label>
+                        <input id="pet"  type="text">
+                        <button>Add Pet</button>
+                    </fieldset>
+                </form>
+
+                <ul>
+                    <li>Hobbes</li>
+                    <li>Poppy</li>
+                </ul>
+
+                <div>
+                    There are <span id="pet-count"></span> pets.
+                </div>
+    
+            </section>
+            <script type="module">
+                import { DOMSubscriber } from './index.mjs';
+                DOMSubscriber.subscribe('#people ul', 'li', (element, subscription) => {
+                    document.querySelector('#people-count').textContent = subscription.matching.length;
+                });
+
+                DOMSubscriber.subscribe('#pets ul', 'li', (element, subscription) => {
+                    document.querySelector('#pet-count').textContent = subscription.matching.length;
+                })
+
+                DOMSubscriber.subscribe('#people form', 'button', (element, subscription) => {
+                    element.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        const input = document.querySelector('#person');
+                        if (input.value.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = input.value.trim();
+                            document.querySelector("#people ul").appendChild(li);
+                            input.value = '';
+                        }
+                    });
+                });
+
+                DOMSubscriber.subscribe('#pets form', 'button', (element, subscription) => {
+                    element.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        const input = document.querySelector('#pet');
+                        if (input.value.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = input.value.trim();
+                            document.querySelector("#pets ul").appendChild(li);
+                            input.value = '';
+                        }
+                    });
+                });
+
+            </script>
+        </main>
+    </body>
+</html>
