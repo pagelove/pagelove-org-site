@@ -16,7 +16,7 @@ class DOMSubscriber {
 
     static subscribe( root, selector, callback ) {
         let subscriptions = {};
-        if (!(root instanceof HTMLElement)) {
+        if (!root?.querySelector) { // if we can query selctor then we're a sensible element
             root = document.querySelector(root);            
         }
         if (!root) {
