@@ -318,7 +318,7 @@ document.addEventListener("DASAvailable", () => {
                 
                 let body;
                 if (optHTML) {
-                    body = serializeContent(postData).trim();
+                    body = serializeContent(optHTML).trim();
                 } else {
                     body = this.outerHTML;
                 }
