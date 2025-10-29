@@ -169,10 +169,14 @@ Object.defineProperty(HTMLElement.prototype, "selector", {
                     return path.join(" > ").toLowerCase();
                 }
 
-                const index = parent.children ? [].indexOf.call(parent.children, el) + 1 : 1;
-                path.unshift(
-                    `${el.tagName}:nth-child(${index})`
-                );
+                if ( el.tagName != 'HTML' ) {
+                    const index = parent.children ? [].indexOf.call(parent.children, el) + 1 : 1;
+                    path.unshift(
+                        `${el.tagName}:nth-child(${index})`
+                    );
+                } else {
+                    path.unshift(el.tagName);
+                }
                 el = parent;
             }
 
