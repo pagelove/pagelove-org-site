@@ -57,8 +57,8 @@ window.server.can = async function(methods, target, options = {}) {
 function htmlToNode(html) {
     try {
         const template = document.createElement("template");
-        template.innerHTML = html;
-        const nNodes = template.content.childNodes.length;
+        template.innerHTML = html.trim();
+        const nNodes = template.content.childNodes.length; // use children here to only count element nodes.
         if (nNodes !== 1) {
             throw new Error(
                 `html parameter must represent a single node; got ${nNodes}. ` +
@@ -310,12 +310,19 @@ document.addEventListener("DASAvailable", () => {
 
     // PUT is the HTTP equivalent of replaceChild
     Object.defineProperty(HTMLElement.prototype, "PUT", {
-        value: async function() {
+        value: async function( optHTML ) {
             try {
                 if (!this.parentNode) {
                     throw new Error('Element must have a parent to use PUT');
                 }
                 
+                let body;
+                if (optHTML) {
+                    body = serializeContent(postData).trim();
+                } else {
+                    body = this.outerHTML;
+                }
+
                 const headers = new Headers();
                 headers.set("Range", `selector=${this.selector}`);
                 headers.set("Content-Type", "text/html");
@@ -323,7 +330,7 @@ document.addEventListener("DASAvailable", () => {
                 const url = this.baseURI || window.location.href;
                 const response = await fetch(url, {
                     headers,
-                    body: this.outerHTML,
+                    body,
                     method: "PUT",
                 });
                 if (response.ok) {
