@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        interpolate-size: allow-keywords;
+    }
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+:where(h1,h2,h3,h4,h5,h6) {
+    font-weight: normal;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #E2E8F0;
+    background-image: url("https://pagelove.org/images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header, main, footer {
+    background: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    margin-left: 280px;
+}
+
+h1 {
+    color: #020618;
+}
+
+header {
+    height: 68px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main {
+    
+    margin-top: 128px;
+
+    width: 680px;
+
+    h1 {
+        font-family: "Source Serif 4", serif;
+        font-weight: 400;
+        font-size: 96px;
+        line-height: 84px;
+        letter-spacing: -4px;            
+
+        span {
+            display: inline-block;
+        }
+    }
+
+    p {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        max-width: 446px;
+
+        font-family: "Inter", sans-serif;
+
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: -0.4px;        
+    }
+
+    form {
+
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 8px 8px 32px;
+        gap: 10px;
+
+        width: 446px;
+        height: 64px;
+
+        background: rgba(248, 250, 252, 0.8);
+        backdrop-filter: blur(10px);
+        /* Note: backdrop-filter has minimal browser support */
+        border-radius: 16px;
+
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+
+        input {
+            background: transparent;
+            border: none;
+        }
+        
+        button {
+            border: 1px solid black;
+            border-radius: 12px;
+            width: 136px;
+            height: 48px;
+            color: #F8FAFC;
+            background-color: #020618;
+
+            padding-top: 12px;
+            padding-right: 24px;
+            padding-bottom: 12px;            
+            padding-left: 24px;  
+        
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-style: Regular;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: -0.2px;
+            
+        }
+    }
+
+    form + p {
+        font-weight: 400;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: -0.2px;
+
+    }
+    
+}
+
+footer {
+
+    padding-top: 64px;
+    padding-bottom: 64px;
+    
+
+    p {
+        margin-top: 1rem;
+
+        width: 563px;
+
+        font-weight: 400;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: -0.4px;        
+    }
+}
+
+/* inputs */
+
