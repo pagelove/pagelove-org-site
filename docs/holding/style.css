@@ -87,7 +87,7 @@ header {
 main {
     
     margin-top: 128px;
-
+    padding-bottom: 128px;
     width: 680px;
 
     h1 {
