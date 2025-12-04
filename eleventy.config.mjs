@@ -1,4 +1,5 @@
 export default async function(eleventyConfig) {
+    eleventyConfig.addPassthroughCopy("src/holding/*.css");
     eleventyConfig.addPassthroughCopy("src/*/*.css");
     eleventyConfig.addPassthroughCopy("src/*/*/*.css");
 
