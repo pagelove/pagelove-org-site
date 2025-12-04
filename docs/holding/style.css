@@ -56,14 +56,14 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
     font-family: "Inter", sans-serif;
-    background-color: #E2E8F0;
+    background-color: #F8FAFC;
     background-image: url("https://pagelove.org/images/background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-header, main, footer {
+header, main {
     background: transparent;
     margin-left: auto;
     margin-right: auto;
@@ -117,30 +117,31 @@ main {
     }
 
     form {
+        border: 1px solid #D9D6D9;
+/*        border-image-source: linear-gradient(91.39deg, #D0D7F4 0%, #D9D6D9 35%, #D7C6C3 65%);*/
 
         /* Auto layout */
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 8px 8px 8px 32px;
+        padding-left: 32px;
+        padding-top: 8px;
+        padding-bottom: 8px;
         gap: 10px;
 
         width: 446px;
         height: 64px;
+        /*background-color: #F8FAFC;*/
+        background-color: #F8FAFC; 
 
-        background: rgba(248, 250, 252, 0.8);
         backdrop-filter: blur(10px);
         /* Note: backdrop-filter has minimal browser support */
         border-radius: 16px;
 
-        /* Inside auto layout */
-        flex: none;
-        order: 0;
-        flex-grow: 0;
-
         input {
             background: transparent;
             border: none;
+            width: 260px;
         }
         
         button {
@@ -162,7 +163,7 @@ main {
             font-size: 14px;
             line-height: 22px;
             letter-spacing: -0.2px;
-            
+            margin-right: -10px;
         }
     }
 
@@ -179,9 +180,11 @@ main {
 
 footer {
 
+    border-top: 1px solid #E2E8F0;
+
     padding-top: 64px;
     padding-bottom: 64px;
-    
+    padding-left: 280px;
 
     p {
         margin-top: 1rem;
