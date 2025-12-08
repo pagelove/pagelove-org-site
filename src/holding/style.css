@@ -103,8 +103,8 @@ main {
     }
 
     p {
-        margin-top: 1rem;
-        margin-bottom: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
         max-width: 446px;
 
         font-family: "Inter", sans-serif;
