@@ -13,6 +13,7 @@ export default async function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/*/*.jpg");
     eleventyConfig.addPassthroughCopy("src/images/*.webp");
     eleventyConfig.addPassthroughCopy("src/*/*.txt");
+    eleventyConfig.addPassthroughCopy("src/*.txt");
     eleventyConfig.addPassthroughCopy("src/*.ico");
      
 
